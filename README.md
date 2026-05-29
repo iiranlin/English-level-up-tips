@@ -1,12 +1,73 @@
 [`简体中文`](docs/README.md) | [`English`](docs/en/README.md)
 
+## 使用方法
+
+这是一个纯静态 Web 版本，内容来自 `docs/` 目录里的 Markdown 与静态资源。
+
+推荐学习路线：
+
+认知篇 -> 单词篇 -> 听力篇 -> 阅读篇 -> 口语篇 -> 写作篇 -> 利用 AI 学习 -> 技术英语词表
+
+## 部署方式
+
+不需要安装依赖，也不需要执行构建命令。
+
+将整个 `docs/` 目录里的文件放到 Nginx 的网站根目录即可访问，例如：
+
+```text
+/var/www/english-level-up-tips/
+├── index.html
+├── app.css
+├── app.js
+├── assets/
+├── threads/
+├── en/
+├── README.md
+└── SUMMARY.md
+```
+
+也就是把仓库里的这些文件：
+
+```text
+docs/index.html
+docs/app.css
+docs/app.js
+docs/assets/
+docs/threads/
+docs/en/
+docs/README.md
+docs/SUMMARY.md
+```
+
+复制到 Nginx 配置里的 `root` 目录。
+
+示例 Nginx 配置：
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    root /var/www/english-level-up-tips;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+配置完成后，访问域名即可打开 Web 版。
+
+
+
 谨以此献给我曾今的挚爱 `W.`
 
 > 我们每个人都生活在各自的过去中，人们会用一分钟的时间去认识一个人，用一小时的时间去喜欢一个人，再用一天的时间去爱上一个人，到最后呢，却要用一辈子的时间去忘记一个人。
 
 ![](./docs/assets/my-love.png)
 
-# 项目介绍
+## 项目介绍
 
 An advanced guide to learn English which might benefit you a lot.
 
